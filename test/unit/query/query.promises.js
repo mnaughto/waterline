@@ -50,7 +50,7 @@ describe('Collection Promise', function () {
       }).then(function (test) {
         assert(test === 'test');
         done();
-      }).fail(function (err) {
+      }).catch(function (err) {
         done(err);
       });
     });
@@ -60,7 +60,7 @@ describe('Collection Promise', function () {
         throw new Error("Error in promise handler");
       }).then(function (unexpected) {
         done(new Error("Unexpected success"));
-      }).fail(function (expected) {
+      }).catch(function (expected) {
         done();
       });
     });
@@ -70,9 +70,25 @@ describe('Collection Promise', function () {
         throw new Error("Error in promise handler");
       }).then(function (unexpected) {
         done(new Error("Unexpected success"));
-      }).fail(function (expected) {
+      }).catch(function (expected) {
         done();
       });
+    });
+
+    it('should only resolve once', function(done){
+      var promise = query.find({});
+      var prevResult;
+      promise
+        .then(function(result){
+          prevResult = result;
+          return promise;
+        }).then(function(result){
+          assert.strictEqual(result, prevResult, "Previous and current result should be equal");
+          done();
+        })
+        .catch(function(err){
+          done(err);
+        });
     });
   });
 });
