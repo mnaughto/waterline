@@ -4,6 +4,7 @@
 [![NPM version](https://badge.fury.io/js/waterline.svg)](http://badge.fury.io/js/waterline)
 [![Dependency Status](https://gemnasium.com/balderdashy/waterline.svg)](https://gemnasium.com/balderdashy/waterline)
 [![Test Coverage](https://codeclimate.com/github/balderdashy/waterline/badges/coverage.svg)](https://codeclimate.com/github/balderdashy/waterline)
+[![StackOverflow](http://img.shields.io/badge/stackoverflow-waterline-blue.svg)]( http://stackoverflow.com/questions/tagged/waterline)
 
 Waterline is a brand new kind of storage and retrieval engine.
 
@@ -46,7 +47,7 @@ var User = Waterline.Collection.extend({
 
     lastName: {
       type: 'string',
-      required: true,
+      required: true
     }
   }
 });
@@ -556,7 +557,7 @@ With Waterline you can associate models with other models across all data stores
 your users can live in PostgreSQL and their photos can live in MongoDB and you can interact with
 the data as if they lived together on the same database. You can also have associations that
 live on seperate connections or in different databases within the same adapter. Read more about
-associations [here](https://github.com/balderdashy/waterline-docs/blob/master/associations.md).
+associations [here](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md).
 
 ## Tests
 
